@@ -38,6 +38,10 @@ function Run(props: $ReadOnly<{run: RunDescription}>): React$Node {
     );
   };
 
+  const clearFilters = () => {
+    window.sessionStorage.removeItem("filter");
+  };
+
   return (
     <>
       <Card
@@ -48,7 +52,11 @@ function Run(props: $ReadOnly<{run: RunDescription}>): React$Node {
             Run {props.run.run_id}
           </>
         }
-        extra={<Link href={`/run/${props.run.run_id}`}>Issues</Link>}>
+        extra={
+          <Link onClick={clearFilters} href={`/run/${props.run.run_id}`}>
+            Issues
+          </Link>
+        }>
         <Row gutter={gutter}>
           <Label>Date</Label>
           <Item>
